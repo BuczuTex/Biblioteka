@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Biblioteka
 =======
 # README #
@@ -31,3 +32,6 @@ This README would normally document whatever steps are necessary to get your app
 * Repo owner or admin
 * Other community or team contact
 >>>>>>> 0530928bb17df50d6f9c92507bbbe2067b5049b2
+=======
+# Biblioteka
+>>>>>>> ad1bd5d08bf3b40837bb196f652efce02637beea
