@@ -1,0 +1,15 @@
+{% extends 'Biblioteka/base.html' %}
+{% load static %}
+{% block title %}Edytuj książkę{% endblock %}
+{% block content %}
+<div class="card form-card" style="width: 18rem;">
+    <div class="card-body">
+        <h3 class="card-title">Edytuj książkę</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Zatwierdź zmiany</button>
+            </form>
+    </div>
+</div>
+{% endblock %}
