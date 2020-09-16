@@ -1,0 +1,10 @@
+{% extends 'Biblioteka/base.html' %}
+{% block title %}Panel użytkownika {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<a href="{% url 'dodajksiazke' %}">Dodaj nową książkę</a><br>
+<a href="{% url 'ksiazki' %}">Wyświetl wszystkie książki dodane przez Ciebie</a><br>
+<a href="{% url 'logout' %}">Wyloguj się</a>
+{% else %} <p>Brak dostępu do tej strony bez autoryzacji.</p>
+{% endif %}
+{% endblock %}

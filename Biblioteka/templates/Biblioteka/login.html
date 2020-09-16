@@ -1,0 +1,14 @@
+{% extends 'Biblioteka/base.html' %}
+{% block title %} Zaloguj się {% endblock %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body form-card">
+        <h3 class="card-title">Zaloguj się</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Zaloguj się</button>
+            </form>
+    </div>
+</div>
+{% endblock %}
