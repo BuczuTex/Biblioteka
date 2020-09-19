@@ -1,6 +1,7 @@
 from django import forms
 from Biblioteka.models import Ksiazka
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
 
 
 class NowaKsiazka(forms.ModelForm):
@@ -10,11 +11,14 @@ class NowaKsiazka(forms.ModelForm):
     wydawnictwo = forms.CharField(label="Wydawnictwo:", max_length=100)
     data_premiery = forms.DateField(label="Data premiery:")
     liczba_stron = forms.IntegerField(label="Liczba stron:")
-    zdjecie = forms.FileField(label="Wybierz zdjęcie")
+    zdjecie = forms.FileField(label="Wybierz zdjęcie", validators=[FileExtensionValidator(['jpg','jpeg','png','gif'])],
+                              widget=forms.FileInput(attrs={'accept':'.jpg,.png,.gif'}))
+
 
     class Meta:
         model = Ksiazka
         fields = ['tytul', 'autor', 'typ_okladki', 'wydawnictwo', 'data_premiery', 'liczba_stron']
+
 
 class LoginForm(forms.ModelForm):
     nazwa_uzytkownika = forms.CharField(label="Nazwa użytkownika", max_length=150)
