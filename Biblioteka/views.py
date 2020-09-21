@@ -14,6 +14,7 @@ from rest_framework import viewsets
 from .serializers import KsiazkaSerializer
 from rest_framework.response import Response
 from rest_framework import status
+import json
 
 def wypisz_wszystkie_ksiazki(request):
     wszystkie_ksiazki = Ksiazka.objects.all()
@@ -104,15 +105,18 @@ class KsiazkaView(viewsets.ModelViewSet):
     serializer_class = KsiazkaSerializer
 
     def create(self, request, *args, **kwargs):
-        serializer = KsiazkaSerializer()
-        if serializer.is_valid and request.method == "POST":
+        if request.data['tytul'] is not '' and request.data['autor'] is not '' and request.data['wydawnictwo'] is not ''\
+                and request.data['zdjecie'] is not '' and request.method == "POST":
             ksiazka = Ksiazka.objects.create(tytul = request.data['tytul'], autor = request.data['autor'],
                                             typ_okladki = request.data['typ_okladki'],
                                             wydawnictwo = request.data['wydawnictwo'], data_premiery = request.data['data_premiery'],
                                             data_publikacji = timezone.now(), liczba_stron = request.data['liczba_stron'],
                                             uzytkownik = self.request.user, zdjecie = request.data['zdjecie'], czy_aktywna = True)
             ksiazka.save()
-            return Response(serializer.data)
+            # jsonStr = json.dumps(ksiazka.__dict__)
+            # return Response(jsonStr)
+            return Response('Książka została dodana')
+        return Response("Dane nie są uzupełnione!")
 
     def destroy(self, request, *args, **kwargs):
         ksiazka = self.get_object()
