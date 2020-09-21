@@ -1,0 +1,2 @@
+Dodawanie, usuwanie, aktualizacja w django rest framework
+Łopatologiczny sposób
